@@ -52,7 +52,15 @@ router.get('/list-items/:id', requireToken, (req, res, next) => {
 })
 
 // CREATE
+router.post('/list-items', requireToken, (req, res, next) => {
+  req.body.listItem.owner = req.user.id
 
+  ListItem.create(req.body.listItem)
+    .then(listItem => {
+      res.status(201).json({ listItem: listItem.toObject() })
+    })
+    .catch(next)
+})
 
 // UPDATE
 router.patch('/list-items/:id', requireToken, removeBlanks, (req, res, next) => {
