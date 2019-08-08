@@ -31,8 +31,8 @@ const requireToken = passport.authenticate('bearer', {
 const router = express.Router()
 
 // INDEX
-router.get('/list-items', (req, res, next) => {
-  ListItem.find()
+router.get('/list-items', requireToken, (req, res, next) => {
+  ListItem.find({ owner: req.user.id })
     .then(listItems => {
       return listItems.map(listItem => listItem.toObject())
     })
