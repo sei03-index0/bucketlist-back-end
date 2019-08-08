@@ -47,7 +47,7 @@ router.get('/list-items/:id', requireToken, (req, res, next) => {
   // req.params.id will be set based on the `:id` in the route
   ListItem.findById(req.params.id)
     .then(handle404)
-    .then(listItems => res.sendStatus(200).json({ listItems: listItems.toObject() }))
+    .then(listItems => res.json({ listItems: listItems.toObject() }))
     .catch(next)
 })
 
@@ -75,7 +75,6 @@ router.patch('/list-items/:id', requireToken, removeBlanks, (req, res, next) => 
     .catch(next)
 })
 
-
 // DESTROY
 router.delete('/list-items/:id', requireToken, (req, res, next) => {
   ListItem.findById(req.params.id)
@@ -87,6 +86,5 @@ router.delete('/list-items/:id', requireToken, (req, res, next) => {
     .then(() => res.sendStatus(204))
     .catch(next)
 })
-
 
 module.exports = router
