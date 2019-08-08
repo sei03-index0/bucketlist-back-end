@@ -31,13 +31,13 @@ const requireToken = passport.authenticate('bearer', {
 const router = express.Router()
 
 // INDEX
-router.get('/list-item', (req, res, next) => {
+router.get('/list-items', (req, res, next) => {
   ListItem.find()
-    .then(list-items => {
-      return list-items.map(list-item => list-item.toObject())
+    .then(listItems => {
+      return listItems.map(listItem => listItem.toObject())
     })
-    .then(list-items => {
-      res.json({ list-items })
+    .then(listItems => {
+      res.json({ listItems })
     })
     .catch(next)
 })
@@ -67,9 +67,9 @@ router.patch('/list-items/:id', requireToken, removeBlanks, (req, res, next) => 
   delete req.body.listItem.owner
   ListItem.findById(req.params.id)
     .then(handle404)
-    .then(list-item => {
-      requireOwnership(req, list-item)
-      return list-item.update(req.body.list-item)
+    .then(listItem => {
+      requireOwnership(req, listItem)
+      return listItem.update(req.body.listItem)
     })
     .then(() => res.sendStatus(204))
     .catch(next)
@@ -80,9 +80,9 @@ router.patch('/list-items/:id', requireToken, removeBlanks, (req, res, next) => 
 router.delete('/list-items/:id', requireToken, (req, res, next) => {
   ListItem.findById(req.params.id)
     .then(handle404)
-    .then(list-item => {
-      requireOwnership(req, list-item)
-      list-item.remove()
+    .then(listItem => {
+      requireOwnership(req, listItem)
+      listItem.remove()
     })
     .then(() => res.sendStatus(204))
     .catch(next)
