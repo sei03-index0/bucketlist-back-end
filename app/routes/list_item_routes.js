@@ -31,7 +31,16 @@ const requireToken = passport.authenticate('bearer', {
 const router = express.Router()
 
 // INDEX
-
+router.get('/list-item', (req, res, next) => {
+  ListItem.find()
+    .then(list-items => {
+      return list-items.map(list-item => list-item.toObject())
+    })
+    .then(list-items => {
+      res.json({ list-items })
+    })
+    .catch(next)
+})
 
 // SHOW
 router.get('/list-items/:id', requireToken, (req, res, next) => {
@@ -46,9 +55,30 @@ router.get('/list-items/:id', requireToken, (req, res, next) => {
 
 
 // UPDATE
+router.patch('/list-items/:id', requireToken, removeBlanks, (req, res, next) => {
+  delete req.body.listItem.owner
+  ListItem.findById(req.params.id)
+    .then(handle404)
+    .then(list-item => {
+      requireOwnership(req, list-item)
+      return list-item.update(req.body.list-item)
+    })
+    .then(() => res.sendStatus(204))
+    .catch(next)
+})
 
 
 // DESTROY
+router.delete('/list-items/:id', requireToken, (req, res, next) => {
+  ListItem.findById(req.params.id)
+    .then(handle404)
+    .then(list-item => {
+      requireOwnership(req, list-item)
+      list-item.remove()
+    })
+    .then(() => res.sendStatus(204))
+    .catch(next)
+})
 
 
 module.exports = router
