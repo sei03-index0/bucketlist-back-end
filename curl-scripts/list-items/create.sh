@@ -12,8 +12,7 @@ curl "${API}${URL_PATH}" \
     "listItem": {
       "title": "'"${TITLE}"'",
       "description": "'"${DESC}"'",
-      "completed": "'"${COMPLETED}"'",
-      "user": "'"${USER}"'"
+      "completed": "'"${COMPLETED}"'"
     }
   }'
 
