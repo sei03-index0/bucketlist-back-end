@@ -1,12 +1,12 @@
-# [Bucketlist]
+# Bucketlist
 
-[Bucketlist] is an application used to easily create and manage all of your bucketlists. Start organizing all of your present and future goals with this modern, cutting edge application built from the ground up.
+Bucketlist is an application used to easily create and manage all of your bucketlists. Start organizing all of your present and future goals with this modern, cutting edge application built from the ground up.
 
-With [Bucketlist] users can seemless generate custom lists of objectives to help themselves stay on track and complete each goal. Immediately on sign in, you have the option to create a new list, view or edit an existing list, and even mark a list as complete!
+With Bucketlist users can seemless generate custom lists of objectives to help themselves stay on track and complete each goal. Immediately on sign in, you have the option to create a new list, view or edit an existing list, and even mark a list as complete!
 
 ## How It Works
 
-Start by creating an account to receive full access to all of [Bucketlist's] features. From here users have the option to:
+Start by creating an account to receive full access to all of Bucketlist's features. From here users have the option to:
 * Change the current login password
 * Create a new list, includes a title and description
 * View or modify the contents of an existing list
@@ -27,7 +27,9 @@ Link to the client repo and deployed website
 
 
 * [Bucketlist-Client Repo](https://github.com/sei03-index0/bucketlist-front-end)
+* [Bucketlist-Server Repo](https://github.com/sei03-index0/bucketlist-back-end)
 * [Bucketlist Deployed Website](https://sei03-index0.github.io/bucketlist-front-end/)
+* [Bucketlist Deployed Heroku](https://obscure-bayou-78598.herokuapp.com/)
 
 
 ### MVP User Stories
@@ -56,14 +58,13 @@ At last we made it to the final length of the project--crossing off completed it
   3. After, an event handler was added to listen for when the box has been checked on the website
   4. Finally, the variable added to the event handler file relayed the checked box to the UI, which was loaded in by the handlebar helper files.
 
-Now that we have achieved MVP we used the remainder of the time to style the website--which seemed like an entire project within itself. Luckily, this team is equipped with two CSS wizards who were able to maneuver through most of the styling issues and concepts, while producing a stylish, modern, and aesthetically pleasing [Bucketlist] website.
+Now that we have achieved MVP we used the remainder of the time to style the website--which seemed like an entire project within itself. Luckily, this team is equipped with two CSS wizards who were able to maneuver through most of the styling issues and concepts, while producing a stylish, modern, and aesthetically pleasing Bucketlist website.
 
 ### The Routes
 
 | Verb   | URI Pattern  | Result |
 |:-------|:-------------|:------------------|
 | GET    | `/list-items`     | read all list items    |
-| GET    | `/list-items/:id` | read single list item  |
 | POST   | `/list-items`     | create list item       |
 | PATCH  | `/list-items/:id` | update list item       |
 | DELETE | `/list-items/:id` | destroy list item      |
